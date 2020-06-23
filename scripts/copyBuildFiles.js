@@ -66,8 +66,6 @@ function createPackageFile() {
       license,
       bugs,
       homepage,
-      peerDependencies,
-      dependencies
     };
 
     return new Promise((resolve) => {
