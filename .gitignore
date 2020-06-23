@@ -1,0 +1,12 @@
+# dependencies
+/node_modules
+/node
+
+# built component library
+/lib
+
+# System Files
+.DS_Store
+
+# Webstorm
+.idea
