@@ -1,17 +1,20 @@
 {
-  "name": "rv-react-test",
-  "version": "0.1.0",
+  "name": "rv-react-test-template",
+  "version": "0.1.1",
   "description": "",
   "main": "./lib/index.js",
-  "files": ["lib"],
-  "private": false,
+  "files": [
+    "lib"
+  ],
+  "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack-dev-server --mode development --hot",
     "prod": "webpack-dev-server --mode production --hot",
-    "build:css": "cpx \"./src/components/*.css\" ./lib",
+    "build:css": "cpx \"./src/components/**/*.css\" ./lib",
     "prebuild:lib": "rimraf lib",
-    "build:lib": "npm run build:commonjs && npm run build:css",
+    "build:lib": "npm run build:commonjs && npm run build:css && npm run build:copy-build-files",
+    "build:copy-build-files": "node scripts/copyBuildFiles.js",
     "build:commonjs": "cross-env NODE_ENV=production babel ./src/components --out-dir ./lib --ignore spec.js",
     "prepublish": "npm run build:lib",
     "dev-bundle": "webpack -w -d"
@@ -33,6 +36,7 @@
     "cpx": "^1.5.0",
     "cross-env": "^7.0.2",
     "css-loader": "^3.4.2",
+    "fs-extra": "^9.0.1",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
     "mini-css-extract-plugin": "^0.9.0",
