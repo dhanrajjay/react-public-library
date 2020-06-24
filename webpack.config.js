@@ -31,7 +31,7 @@ module.exports = (env, args) => {
 			  {
 			  	test: /\.(s*)css$/,
 			  	use: [
-		          'sass-loader'
+		          'style-loader', 'css-loader'
 		        ],
 			  }
 			]
@@ -51,7 +51,7 @@ module.exports = (env, args) => {
 			new HtmlWebPackPlugin({
 				template: "./src/index.html",
 				filename: "./index.html"
-			})
+			}),
 			new MinifyPlugin()
 		]
 	}
