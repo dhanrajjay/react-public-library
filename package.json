@@ -8,7 +8,7 @@
   ],
   "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "dev": "webpack-dev-server --mode development --hot",
     "prod": "webpack-dev-server --mode production --hot",
     "build:css": "cpx \"./src/components/**/*.css\" ./lib",
@@ -22,7 +22,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bootstrap": "^4.5.0",
+    "prop-types": "^15.7.2",
     "react": "^16.12.0",
+    "react-bootstrap": "^1.2.2",
     "react-dom": "^16.12.0"
   },
   "devDependencies": {
@@ -31,6 +34,7 @@
     "@babel/node": "^7.8.4",
     "@babel/preset-env": "^7.8.4",
     "@babel/preset-react": "^7.8.3",
+    "@testing-library/react": "^10.4.4",
     "babel-loader": "^8.0.6",
     "babel-minify-webpack-plugin": "^0.3.1",
     "cpx": "^1.5.0",
@@ -39,6 +43,7 @@
     "fs-extra": "^9.0.1",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
+    "jest": "^26.1.0",
     "mini-css-extract-plugin": "^0.9.0",
     "node-sass": "^4.12.0",
     "rimraf": "^3.0.2",
@@ -69,6 +74,11 @@
       "webpack-cli": "enable running webpack from the command line",
       "webpack-dev-server": "this development server automatically rerun webpack when our file is changed",
       "mini-css-extract-plugin": "used to move the css into seprate files instead of in the bundle"
+    }
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "\\.(css|less)$": "<rootDir>/__mocks__/styleMock.js"
     }
   }
 }
