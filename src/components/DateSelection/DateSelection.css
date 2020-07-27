@@ -1,0 +1,14 @@
+.day-select {
+    width: 70px !important;
+    margin-right: 5px;
+}
+
+.month-select {
+    width: 150px !important;
+    margin-right: 5px;
+}
+
+.year-select {
+    width: 100px !important;
+    margin-right: 5px;
+}

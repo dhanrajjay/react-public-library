@@ -4,6 +4,7 @@ import TextInput from './TextInput';
 import Select from './Select';
 import RadioGroup from './RadioGroup';
 import Button from './Button';
+import DateSelection from './DateSelection';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import {Validator} from './Utils/Validator';
@@ -16,7 +17,10 @@ class App extends Component {
             firstName: '',
             dropDown: '',
             radio: 'Option 2',
-            password: ''
+            password: '',
+            year: '2020',
+            month: 'July',
+            day: '27'
          }
     }
 
@@ -32,7 +36,7 @@ class App extends Component {
 
 	render() {
 	    const {
-	        firstName, dropDown, radio, password
+	        firstName, dropDown, radio, password, day, month, year
 	    } = this.state;
 	    const dropDownList =  [1,2,3];
 	    const radioList = [{name: 'test', label: 'test 1', defaultValue: 'test', value: 'test'}];
@@ -56,6 +60,8 @@ class App extends Component {
                 <RadioGroup onChange={this.handleChange.bind(this)} value={radio} list={radioList} />
 
                 <Button value="Submit" onChange={this.buttonChange.bind(this)} />
+
+                <DateSelection label="Date" year={year} month={month} day={day} onChange={this.handleChange.bind(this)} />
             </>
 		)
 	}

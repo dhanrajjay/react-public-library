@@ -23,21 +23,22 @@ const RadioInput = ({
           value={value} inline id={label}
           name={name}
           label={label}
+          className={className}
           checked={defaultValue === value}
           onChange={handleChange} />
   )
 };
 
 RadioInput.defaultProps = {
-    className: "simple-select-button",
     value: "",
-    label: "Drop Down"
+    label: "Radio Select"
 }
 
 RadioInput.propTypes = {
     className: PropTypes.string,
     value: PropTypes.string,
-    onChange: PropTypes.func.isRequired
+    onChange: PropTypes.func.isRequired,
+    defaultValue: PropTypes.string
 }
 
 export default RadioInput;

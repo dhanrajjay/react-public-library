@@ -25,9 +25,7 @@ const RadioGroup = ({
                 value={item.value} onChange={handleChange} label={item.label} />
             ):
             <>
-            <RadioInput name="radio" value="Option 1" defaultValue={value} onChange={handleChange} label="Option 1" />
-            <RadioInput name="radio" value="Option 2" defaultValue={value} onChange={handleChange} label="Option 2" />
-            <RadioInput name="radio" value="Option 3" defaultValue={value} onChange={handleChange} label="Option 3" />
+            <div className="error-list-provider">Empty list (or) No List provided.</div>
             </>
         }
     </div>
