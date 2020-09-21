@@ -53,7 +53,10 @@ module.exports = (env, args) => {
 				filename: "./index.html"
 			}),
 			new MinifyPlugin()
-		]
+		],
+		devServer: {
+		    port: 9000
+		}
 	}
 
 	return config;

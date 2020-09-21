@@ -70,7 +70,7 @@ const DateSelection = ({
   return (
     <Form.Group>
         <Form.Label htmlFor={name}>{label}</Form.Label>
-        <Row>
+        <Row className="no-margin">
             <Form.Control value={month} className="month-select"
                           name="month" as="select" data-testid="month"
                           onChange={monthChange}>

@@ -5,6 +5,7 @@ import Select from './Select';
 import RadioGroup from './RadioGroup';
 import Button from './Button';
 import DateSelection from './DateSelection';
+import ButtonGroupList from './ButtonGroupList';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import {Validator} from './Utils/Validator';
@@ -20,13 +21,15 @@ class App extends Component {
             password: '',
             year: '2020',
             month: 'July',
-            day: '27'
+            day: '27',
+            btnGroup: '1'
          }
     }
 
-    handleChange(event) {
+    handleChange(event, isInnerValue) {
+        let val = isInnerValue ? event.target.innerHTML : event.target.value;
         this.setState({
-            [event.target.name]: event.target.value
+            [event.target.name]: val
         });
     }
 
@@ -36,7 +39,7 @@ class App extends Component {
 
 	render() {
 	    const {
-	        firstName, dropDown, radio, password, day, month, year
+	        firstName, dropDown, radio, password, day, month, year, btnGroup
 	    } = this.state;
 	    const dropDownList =  [1,2,3];
 	    const radioList = [{name: 'test', label: 'test 1', defaultValue: 'test', value: 'test'}];
@@ -60,6 +63,8 @@ class App extends Component {
                 <RadioGroup onChange={this.handleChange.bind(this)} value={radio} list={radioList} />
 
                 <Button value="Submit" onChange={this.buttonChange.bind(this)} />
+
+                <ButtonGroupList onChange={this.handleChange.bind(this)} value={btnGroup} name="btnGroup" list={["1","2"]} />
 
                 <DateSelection label="Date" year={year} month={month} day={day} onChange={this.handleChange.bind(this)} />
             </>
