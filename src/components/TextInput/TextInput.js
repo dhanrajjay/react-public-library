@@ -22,7 +22,7 @@ const TextInput = ({
     const handleChange = (event) => {
         if (validators.length)
             setError(validateInput(validators, event.target.value));
-        onChange(event);
+        onChange(event, null, error);
     }
 
   return (
