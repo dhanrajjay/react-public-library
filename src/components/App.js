@@ -23,11 +23,18 @@ class App extends Component {
             month: 'July',
             day: '27',
             btnGroup: '1'
-         }
+        }
+        this.validators = {
+            firstName: {
+                valid: false
+            }
+        };
+        this.updateValidator = this.updateValidator.bind(this);
     }
 
-    handleChange(event, isInnerValue) {
+    handleChange(event, isInnerValue, isError) {
         let val = isInnerValue ? event.target.innerHTML : event.target.value;
+        this.updateValidator(event.target.name, isError);
         this.setState({
             [event.target.name]: val
         });
@@ -35,6 +42,26 @@ class App extends Component {
 
     buttonChange(event) {
         console.log(event);
+    }
+
+    updateValidator(field, value) {
+        if (!field) {
+            return;
+        }
+        if (this.validators[field]) {
+            this.validators[field].valid = value;
+        }
+        console.log(this.validators[field]);
+    }
+
+    isFormValid() {
+        let status = true;
+        Object.keys(this.validators).forEach((field) => {
+          if (!this.validators[field].valid) {
+            status = false;
+          }
+        });
+        return status;
     }
 
 	render() {
@@ -48,7 +75,8 @@ class App extends Component {
                 <div className="app">Test</div>
                 <TextInput label="Firstname" name="firstName"
                     placeholder="Enter FirstName" value={firstName}
-                    validators={[{check: Validator.required, message: 'This field is required'}]}
+                    validators={[{check: Validator.required, message: 'This field is required'},
+                    {check: Validator.isMinimum, message: 'This field must be longer than two characters'}]}
                     onChange={this.handleChange.bind(this)}/>
 
                 <TextInput label="Password" name="password" type="password"
@@ -62,7 +90,7 @@ class App extends Component {
 
                 <RadioGroup onChange={this.handleChange.bind(this)} value={radio} list={radioList} />
 
-                <Button value="Submit" onChange={this.buttonChange.bind(this)} />
+                <Button value="Submit" onChange={this.buttonChange.bind(this)} className={`${this.isFormValid() ? 'app-button' : 'disabled'}`} />
 
                 <ButtonGroupList onChange={this.handleChange.bind(this)} value={btnGroup} name="btnGroup" list={["1","2"]} />
 

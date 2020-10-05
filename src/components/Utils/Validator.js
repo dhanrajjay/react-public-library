@@ -5,6 +5,13 @@ export class Validator {
         }
         return false;
     }
+    static isMinimum(value, message) {
+        if (value && value.length > 2) {
+            return { error: true, message };
+        } else {
+            return { error: false, message: '' };
+        }
+    }
 }
 
 export const validateInput = (validators, value) => {
