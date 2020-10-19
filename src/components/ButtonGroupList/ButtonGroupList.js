@@ -27,7 +27,7 @@ const ButtonGroupList = ({
                    list.map((item, index)=>
                       <Button key={`${item}~${index}`} name={name} style={{width: "120px"}}
                               onClick={handleChange}
-                              active={value === item}>{item}</Button>
+                              active={value === item.value}>{item.label}</Button>
                    ):
                    <>
                    <div className="error-list-provider">Empty list (or) No List provided.</div>

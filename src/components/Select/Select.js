@@ -11,9 +11,10 @@ const Select = ({
   className,
   value,
   url,
+  errorCB,
   ...props
 }) => {
-    const listOption = list.map(item=>
+    const listOption = list && list.map(item=>
        <option key={item} value={item}> {item} </option>
     );
     const [loading, setLoading] = useState(true);
@@ -22,9 +23,9 @@ const Select = ({
     const handleChange = (event) => {
         onChange(event);
     }
-    url = url || `https://cors-anywhere.herokuapp.com/https://swapi.dev/api/people`;
+
     useEffect(() => {
-        if (list.length) {
+        if (list && list.length) {
             setLoading(false);
             return;
         }
@@ -36,6 +37,9 @@ const Select = ({
                <option key={item.name} value={item.name}> {item.name} </option>
             ));
             setLoading(false);
+          }, (error) => {
+            setLoading(false);
+            errorCB('Failed to load the list');
           });
      }, [setLoading]);
 
@@ -62,13 +66,14 @@ Select.defaultProps = {
 }
 
 Select.propTypes = {
-    list: PropTypes.any.isRequired,
+    list: PropTypes.any,
     className: PropTypes.string,
     label: PropTypes.string,
     value: PropTypes.string,
     name: PropTypes.string,
     onChange: PropTypes.func.isRequired,
-    url: PropTypes.string
+    url: PropTypes.string,
+    errorCB: PropTypes.func
 }
 
 export default Select;

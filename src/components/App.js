@@ -41,7 +41,7 @@ class App extends Component {
     }
 
     buttonChange(event) {
-        console.log(event);
+        console.log(this.state);
     }
 
     updateValidator(field, value) {
@@ -64,6 +64,10 @@ class App extends Component {
         return status;
     }
 
+    dropDownFailureCB(error) {
+        console.log(error);
+    }
+
 	render() {
 	    const {
 	        firstName, dropDown, radio, password, day, month, year, btnGroup
@@ -83,6 +87,9 @@ class App extends Component {
                     placeholder="Enter Password" value={password}
                     onChange={this.handleChange.bind(this)}/>
 
+                <Select label="Select Dropdown" name="dropDown" value={dropDown} errorCB={this.dropDownFailureCB}
+                    onChange={this.handleChange.bind(this)} url="https://www.google.com"/>
+
                 <Select label="Select Dropdown" name="dropDown" value={dropDown}
                     onChange={this.handleChange.bind(this)} list={dropDownList}/>
 
@@ -92,7 +99,7 @@ class App extends Component {
 
                 <Button value="Submit" onChange={this.buttonChange.bind(this)} className={`${this.isFormValid() ? 'app-button' : 'disabled'}`} />
 
-                <ButtonGroupList onChange={this.handleChange.bind(this)} value={btnGroup} name="btnGroup" list={["1","2"]} />
+                <ButtonGroupList onChange={this.handleChange.bind(this)} value={btnGroup} name="btnGroup" list={[{label: "1", value: "1"},{label: "2", value: "2"}]} />
 
                 <DateSelection label="Date" year={year} month={month} day={day} onChange={this.handleChange.bind(this)} />
             </>
