@@ -15,7 +15,7 @@ const Select = ({
   ...props
 }) => {
     const listOption = list && list.map(item=>
-       <option key={item} value={item}> {item} </option>
+       <option key={item} value={item.value}> {item.label} </option>
     );
     const [loading, setLoading] = useState(true);
     const [optionItems, setOptionItems] = useState(listOption);

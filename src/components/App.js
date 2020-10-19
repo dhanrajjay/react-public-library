@@ -72,7 +72,7 @@ class App extends Component {
 	    const {
 	        firstName, dropDown, radio, password, day, month, year, btnGroup
 	    } = this.state;
-	    const dropDownList =  [1,2,3];
+	    const dropDownList =  [{value: 1, name: '1'}, {value: 2, name: '2'}, {value: 3, name: '3'}];
 	    const radioList = [{name: 'test', label: 'test 1', defaultValue: 'test', value: 'test'}];
 		return(
 		    <>
