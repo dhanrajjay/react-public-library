@@ -16,6 +16,7 @@ const TextInput = ({
   children,
   label,
   isRequired,
+  externalRef,
   ...props
 }) => {
     const [error, setError] = useState(false);
@@ -37,6 +38,7 @@ const TextInput = ({
         value={value}
         className={className}
         isInvalid={error.message}
+        ref={externalRef}
       />
       <Form.Control.Feedback type="invalid">
         {error && error.message}
