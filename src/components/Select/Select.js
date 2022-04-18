@@ -11,7 +11,7 @@ const Select = forwardRef((props, ref) => {
             className,
             value,
             url,
-            errorCB} = {...props}
+            errorCB, externalRef} = {...props}
   const listOption = list && list.map(item=>
      <option key={item.value} value={item.value}> {item.label} </option>
   );
@@ -59,7 +59,7 @@ const Select = forwardRef((props, ref) => {
           (<Form.Group>
                   <Form.Label htmlFor={name}>{label}</Form.Label>
                   <Form.Control value={value} className={className}
-                                name={name} as="select"
+                                name={name} as="select" ref={externalRef}
                                 onChange={handleChange}>
                       {optionItems}
                   </Form.Control>
